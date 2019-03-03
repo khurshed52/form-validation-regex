@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>form</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.min.css" />
+</head>
+
+<body>
+    <div class="container">
+        <form onsubmit="return validation()">
+            <div class="input-field">
+                <input id="user" type="text" class="validate">
+                <label for="user">User Name</label>
+                <span id="userError"> </span>
+            </div>
+            <div class="input-field">
+                <input id="email" type="text" class="validate">
+                <label for="email">Email</label>
+            </div>
+            <button type="submit" class="btn waves-effect waves-light">Submit</button>
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.all.min.js"></script>
+    <script type="text/javascript">
+        function validation() {
+            var username = document.getElementById('user').value;
+            var email = document.getElementById('email').value;
+            var usercheck = /^[A-Za-z .]{3,30}$/;
+            var emailcheck = /^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+            //user name validation
+            if (usercheck.test(username)) {
+                document.getElementById('userError').innerHTML = "";
+            }
+
+            else {
+                Swal.fire({
+                    type: 'error',
+                    text: 'Please Enter Valid User name',
+                    timer: 3000
+                });
+                return false;
+            }
+
+            //email validation
+            if (emailcheck.test(email)) {
+                //to do correct 
+            }
+            else {
+                Swal.fire({
+                    type: 'error',
+                    text: 'Please Enter Valid Email',
+                    timer: 3000
+                });
+                return false;
+            }
+
+        }
+    </script>
+</body>
+
+</html>
